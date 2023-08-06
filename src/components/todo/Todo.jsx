@@ -2,9 +2,14 @@ export default function Todo ({ todo }) {
     return (
         <>
             <label>
-                <input></input>
-                { todo.text}
+                <input
+                    type="checkbox"
+                >
+                </input>
+                { todo.text }
             </label>
+            <button>Edit</button>
+            <button>Delete</button>
         </>
     )
 }
