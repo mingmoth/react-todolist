@@ -77,9 +77,22 @@ ul {
 li {
   text-align: start;
   margin-bottom: 1rem;
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 1rem;
 }
 
 label {
   display: flex;
   gap: 1rem;
+  align-items: center;
+}
+
+.add-todo {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 1rem;
 }
