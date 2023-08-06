@@ -1,7 +1,8 @@
 export default function AddTodo () {
     return (
-        <>
-            <h1>AddTodo</h1>
-        </>
+        <div className="add-todo">
+            <input type="text" ></input>
+            <button>Add New Todo</button>
+        </div>
     )
 }
