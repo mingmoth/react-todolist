@@ -1,4 +1,17 @@
+import { useTodosDispatchContext } from "../../context/todosContext"
+
 export default function Todo ({ todo }) {
+    const dispatch = useTodosDispatchContext();
+
+    function deleteTodo () {
+        dispatch({
+            type: 'delete',
+            payload: {
+                todoId: todo.id,
+            }
+        })
+    }
+
     return (
         <>
             <label>
@@ -9,7 +22,9 @@ export default function Todo ({ todo }) {
                 { todo.text }
             </label>
             <button>Edit</button>
-            <button>Delete</button>
+            <button
+                onClick={() => deleteTodo()}
+            >Delete</button>
         </>
     )
 }
