@@ -8,8 +8,8 @@ function App() {
     return (
         <>
             <h1>Todo</h1>
-            <AddTodo />
             <TodosContextProvider>
+                <AddTodo />
                 <TodoList />
             </TodosContextProvider>
         </>
