@@ -12,11 +12,22 @@ export default function Todo ({ todo }) {
         })
     }
 
+    function toggleTodo () {
+        dispatch({
+            type: 'toggle',
+            payload: {
+                todoId: todo.id,
+            }
+        })
+    }
+
     return (
         <>
             <label>
                 <input
                     type="checkbox"
+                    checked={ todo.completed }
+                    onChange={() => toggleTodo()}
                 >
                 </input>
                 { todo.text }
