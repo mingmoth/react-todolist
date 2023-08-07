@@ -1,19 +1,11 @@
 import { useState } from "react";
 import { useTodosDispatchContext } from "../../context/todosContext"
 
-function EditingTodo ({ todo, isEditing }) {
-    const [editingTodo, setEditingTodo] = useState(todo.text)
-
-    // function editTodo () {
-    //     console.log('edit')
-    //     dispatch({
-    //         type: 'edit',
-    //         payload: {
-    //             todoId: todo.id,
-    //             newTodoText: editingTodo,
-    //         }
-    //     })
-    // }
+function EditingTodo ({
+    todo,
+    editingTodo,
+    setEditingTodo
+}) {
 
     return (
         <input
@@ -26,7 +18,21 @@ function EditingTodo ({ todo, isEditing }) {
 
 export default function Todo ({ todo }) {
     const [isEditing, setIsEditing] = useState(false)
+    const [editingTodo, setEditingTodo] = useState(todo.text)
     const dispatch = useTodosDispatchContext();
+
+    function editTodo () {
+        if(isEditing) {
+            dispatch({
+                type: 'edit',
+                payload: {
+                    todoId: todo.id,
+                    newTodoText: editingTodo,
+                }
+            })
+        }
+        setIsEditing(!isEditing)
+    }
 
     function deleteTodo () {
         dispatch({
@@ -56,14 +62,15 @@ export default function Todo ({ todo }) {
                 >
                 </input>
                 {isEditing
-                    ? <EditingTodo todo={ todo } isEditing={isEditing} />
+                    ? <EditingTodo
+                        todo={ todo }
+                        editingTodo={editingTodo}
+                        setEditingTodo={setEditingTodo} />
                     : <span>{ todo.text }</span>
                 }
             </label>
             <button
-                onClick={() => {
-                    setIsEditing(!isEditing)
-                }}
+                onClick={() => editTodo()}
             >
                 {isEditing ? 'Save' : 'Edit'}
             </button>
