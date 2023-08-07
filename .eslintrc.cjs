@@ -16,5 +16,7 @@ module.exports = {
       'warn',
       { allowConstantExport: true },
     ],
+    indent: ['warn', 4],
+    'max-depth': ['warn', 4],
   },
 }
